@@ -21,5 +21,6 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         'connect/callback/apple',
         'api/connect/callback/apple',
+        'api/*'
     ];
 }

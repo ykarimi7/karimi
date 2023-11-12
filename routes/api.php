@@ -69,6 +69,16 @@ Route::group(['middleware' => 'locale'], function() {
         });
     }
 
+    /**
+     * added this routes to read api request from client if request sended to web Controllers
+     * SABER
+     */
+    Route::post('auth/signup', [AuthController::class , 'signup'])->name('api.auth.signup');
+    Route::post('auth/login', [AuthController::class , 'login'])->name('api.auth.login');
+
+
+
+    /**End */
 
     Auth::routes();
 

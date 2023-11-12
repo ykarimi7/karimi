@@ -1,7 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Frontend\AuthController;
 
 /**
  * Created by NiNaCoder.
@@ -70,4 +69,3 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('upload', 'UploadController@upload')->name('auth.upload.post');
     Route::get('auth/logout', 'AuthController@logout')->name('auth.logout');
 });
-

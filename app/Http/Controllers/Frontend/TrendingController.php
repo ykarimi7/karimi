@@ -110,4 +110,10 @@ class TrendingController
             ->orderBy('total_plays', 'desc')
             ->paginate($limit);
     }
+
+   public function customer()
+   {
+      return view('frontend.default.customer');
+   }
+
 }

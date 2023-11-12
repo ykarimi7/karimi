@@ -5,8 +5,7 @@
  * Time: 20:33
  */
 Route::get('discover', 'DiscoverController@index')->name('discover');
-Route::get('customer', 'DiscoverController@customer')->name('customer');
-Route::get('/test', 'DiscoverController@test');
+//Route::get('customer', 'DiscoverController@customer')->name('customer');
 Route::get('/test1',function (){
     return view('test');
 });

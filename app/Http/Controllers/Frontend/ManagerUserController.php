@@ -11,22 +11,26 @@ use Illuminate\Support\Facades\Hash;
 
 class ManagerUserController extends Controller
 {
-     public function adduser()
+     public function newaddnewuser(Request $request)
      {
+
+
         $user1=Auth()->user();
-      /*  $this->validate($request,['name'=>'required','email'=>'required','password'=>'required','tel'=>'required'],['name.required'=>'İsim boş biraklamaz','password.required'=>'Şifre boş biraklamaz','tel.required'=>'Şifre boş biraklamaz']);
+        $this->validate($request,['name'=>'required','email'=>'required','password'=>'required','tel'=>'required'],['name.required'=>'İsim boş biraklamaz','password.required'=>'Şifre boş biraklamaz','tel.required'=>'Şifre boş biraklamaz']);
          $name=$request->name;
          $password=$request->password;
+         $repassword=$request->repassword;
+
          $email=$request->email;
          $phone=$request->tel;
-      */
-         $name='abdollah';
-         $password='12345678';
-         $email='tr1wee34@gmail.com';
-         $phone='548796254';
+         if($password!=$repassword)
+             return back()->with('unsuccess','Şifre tekrar yanliş');
+
+
 
          $user= User::create([
              'name' => $name,
+             'username'=>$name,
              'email' => $email,
              'tel'=>$phone,
              'password' => Hash::make($password),
@@ -48,6 +52,10 @@ class ManagerUserController extends Controller
           ]);
 
            $userpass->save();
+
+           return back()->with('success','Kayd oldu');
+
+
      }
 
 

@@ -6,7 +6,4 @@
  */
 Route::get('discover', 'DiscoverController@index')->name('discover');
 //Route::get('customer', 'DiscoverController@customer')->name('customer');
-Route::get('/test1',function (){
-    return view('test');
-});
-
+Route::post('/newaddnewuser','ManagerUserController@newaddnewuser');

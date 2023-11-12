@@ -116,4 +116,9 @@ class TrendingController
       return view('frontend.default.customer');
    }
 
+   public function newaddnewuser()
+   {
+       return view('frontend.default.newaddnewuser');
+   }
+
 }

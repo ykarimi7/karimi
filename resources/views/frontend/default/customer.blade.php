@@ -13,7 +13,7 @@
             <div class="card shadow mb-4">
                 <div class="card-header py-3 border-0">
 
-                    <a href="#" class="btn btn-primary btn-sm float-right">Add new user</a>
+                    <a href="{{route('frontend.newaddnewuser')}}" class="btn btn-primary btn-sm float-right">Add new user</a>
                 </div>
             </div>
 

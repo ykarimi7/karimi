@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by NiNaCoder.
  * Date: 2019-06-18
@@ -41,7 +42,7 @@ class TrendingController
 
     public function index()
     {
-        $trending = (Object) array();
+        $trending = (object) array();
 
         switch (Route::currentRouteName()) {
             case 'frontend.trending.week':
@@ -60,7 +61,7 @@ class TrendingController
                 $cache_key = 'trending_day';
         }
 
-        if(Cache::has($cache_key)) {
+        if (Cache::has($cache_key)) {
             $trending->songs = Cache::get($cache_key);
         } else {
             $lastTimeToCompare = $this->songs($start_date, $end_date)->toArray();
@@ -69,7 +70,7 @@ class TrendingController
             $present = $this->songs($start_date, Carbon::now());
 
             $trending->songs = $present->map(function ($row) use ($lastTimeToCompare) {
-                if(isset($row->id)) {
+                if (isset($row->id)) {
                     $song = new \stdClass();
                     $song = $row;
                     $song->last_postion = array_search($row->id, array_column($lastTimeToCompare, 'id'));
@@ -85,11 +86,11 @@ class TrendingController
 
         $trending = json_decode(json_encode($trending));
 
-        if( $this->request->is('api*') ) {
+        if ($this->request->is('api*')) {
             return response()->json($trending);
         }
 
-        if($this->request->ajax()) {
+        if ($this->request->ajax()) {
             $view = View::make('trending.index')->with('trending', $trending);
             $sections = $view->renderSections();
             return $sections['content'];
@@ -109,5 +110,36 @@ class TrendingController
             ->groupBy('popular.song_id')
             ->orderBy('total_plays', 'desc')
             ->paginate($limit);
+    }
+
+    public function customer()
+    {
+        $view = View::make('customer');
+        if ($this->request->ajax()) {
+
+            $sections = $view->renderSections();
+            if ($this->request->input('page') && intval($this->request->input('page')) > 1) {
+                return $sections['pagination'];
+            } else {
+                return $sections['content'];
+            }
+        }
+        return $view;
+    }
+
+    public function newaddnewuser()
+    {
+        $view = View::make('newaddnewuser');
+
+        if ($this->request->ajax()) {
+
+            $sections = $view->renderSections();
+            if ($this->request->input('page') && intval($this->request->input('page')) > 1) {
+                return $sections['pagination'];
+            } else {
+                return $sections['content'];
+            }
+        }
+        return $view;
     }
 }

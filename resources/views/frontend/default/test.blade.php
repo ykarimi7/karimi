@@ -1,3 +1,4 @@
+
 @extends('index')
 @section('content')
       <div id="page-content">
@@ -34,78 +35,57 @@
 
 
 
-                  <form  id="formProcess" method="post" action="{{url('/newaddnewuser')}}" enctype="multipart/form-data">
+                  <form   method="post" action="{{url('/newaddnewuser')}}" enctype="multipart/form-data">
 
-                        {{csrf_field()}}                <div class="page-header ">
-                              <h1 > <span style="margin-left: 30%" data-translate-text="Muşteri Ekleme Formu">Muşteri Ekleme Formu</span></h1>
-                        </div>
-                        <div id="column1" class="full settings">
+                        {{csrf_field()}}
 
-                              <div class="content row">
+                        <div class="card-body">
 
-                                    <div class="col-lg-3 col-12"></div>
-                                    <div class=" col-lg-6 col-12">
-                                          <div class="form-control">
-                                                <label class="control-label" for="name"  placeholder="Name"  value="{{ old('name') }}" data-translate-text="FORM_NAME">{{ __('web.FORM_NAME') }}</label>
-                                                <input  name="name" maxlength="175"  type="text" required>
-                                          </div>
-                                    </div>
 
+                              <div class="form-group  col-lg-6 col-12 ">
+                                    <label id="menu" for="exampleInputEmail1">Ad Soyad</label>
+                                    <input type="text" name="name1" class="form-control"   value="{{ old('name1') }}" id="exampleInputEmail1" placeholder="name">
+                              </div>
+                              <div class="col-lg-3"></div>
+                              <div class="form-group  col-lg-6 col-12 ">
+                                    <label id="menu" for="exampleInputEmail1">Şube Adı</label>
+                                    <input type="text" name="name" class="form-control"   value="{{ old('name') }}" id="exampleInputEmail1" placeholder="name">
+                              </div>
+                              <div class="col-lg-3"></div>
+                              <div class="form-group col-lg-6 col-12 ">
+                                    <label id="menu" for="exampleInputEmail1">E-Posta</label>
+                                    <input type="email" name="email" class="form-control"  value="{{ old('email') }}"  id="exampleInputEmail1" placeholder="email">
+                              </div>
+                              <div class="col-lg-3"></div>
+                              <div class="form-group col-lg-6 col-12 ">
+                                    <label id="menu" for="tel">Telefon</label>
+                                    <input type="text" name="tel" class="form-control"   value="{{ old('tel') }}" id="exampleInputEmail1" placeholder="telfon">
+                              </div>
+                              <div class="col-lg-3"></div>
+                              <div class="form-group col-lg-6 col-12 ">
+                                    <label id="menu" for="exampleInputEmail1">Şifre</label>
+                                    <input type="password" name="password" class="form-control" placeholder="Şifre"   id="exampleInputEmail1" >
+                              </div>
+
+                              <div class="col-lg-3"></div>
+                              <div class="form-group col-lg-6 col-12 ">
+                                    <label id="menu" for="exampleInputEmail1">Şifre Tekrari</label>
+                                    <input type="password" name="repassword" class="form-control"  placeholder="Şifre Tekrari"   id="exampleInputEmail1">
                               </div>
 
 
-                              <div class="content row">
-                                    <div class="col-lg-3 col-12"></div>
-                                    <div class=" col-lg-6 col-12">
-                                          <div class="form-control">
-                                                <label class="control-label" for="email"  placeholder="Email"   value="{{ old('email') }}" data-translate-text="Email">Email</label>
-                                                <input  name="email" maxlength="175"  type="email" required>
-                                          </div>
-                                    </div>
 
-                              </div>
-                              <div class="content row">
-                                    <div class="col-lg-3 col-12"></div>
-                                    <div class=" col-lg-6 col-12">
-                                          <div class="form-control">
-                                                <label class="control-label" for="tel" placeholder="Telfon"  value="{{ old('tel') }}" data-translate-text="Telfon">Telfon</label>
-                                                <input class="span4" name="tel" maxlength="175"  type="text" required>
-                                          </div>
-                                    </div>
-
-                              </div>
-
-                              <div class="content row">
-                                    <div class="col-lg-3 col-12"></div>
-                                    <div class=" col-lg-6 col-12">
-                                          <div class="form-control">
-                                                <label class="control-label" for="password"  placeholder="Şifre"  data-translate-text="Şifre">Şifre</label>
-                                                <input class="span4" name="password" maxlength="175"    type="password" required>
-                                          </div>
-                                    </div>
-
-                              </div>
-
-                              <div class="content row">
-                                    <div class="col-lg-3 col-12"></div>
-                                    <div class=" col-lg-6 col-12">
-                                          <div class="form-control">
-                                                <label class="control-label" for="re-password"  placeholder="Şifre Tekrari"   data-translate-text="Şifre Tekrari">Şifre Tekrari</label>
-                                                <input class="span4" name="repassword" maxlength="175"    type="password" required>
-                                          </div>
-                                    </div>
-
-                              </div>
 
 
                               <button id="send-button" class="btn btn-primary form-side__btn" type="submit">Kaydet
-                                    <div id="button-spinner" style="margin-left: 10px; width: 15px; height: 15px; display: none" ></div>
+                                    <div id="button-spinner" style="margin-left: 10px; width: 15px; height: 15px; display: none" class="spinner-border"></div>
                               </button>
-
-
                         </div>
-
                   </form>
+
+
+
+
             </div>
       </div>
 @endsection

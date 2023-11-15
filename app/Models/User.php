@@ -21,7 +21,8 @@ class User extends Authenticatable implements HasMedia
     use HasApiTokens, Notifiable, InteractsWithMedia, SanitizedRequest;
 
     protected $fillable = [
-        'name', 'email', 'password', 'username', 'artworkId', 'email_verified_code'
+        'name', 'email', 'password', 'username', 'artworkId', 'email_verified_code',
+        'tel','status','usercount','onlinetime'
     ];
 
     protected $appends = [

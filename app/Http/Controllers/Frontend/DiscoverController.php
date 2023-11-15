@@ -8,6 +8,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\CountryLanguage;
+use App\Models\Manauser;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use DB;
@@ -57,13 +58,23 @@ class DiscoverController
 
     public function customer()
     {
-        return view('frontend.default.customer');
+       /* $user=Auth()->user();
+       $status=$user->status;
+       if($status==0)
+            $status='offline';
+       if($status==1)
+           $status='online';
+       $lastvizit=$user->last_activity;
+        $count=Manauser::where('manager_id','=',$user->id)->count();
+        $count=2;
+        $var=Manauser::where('manager_id','=',$user->id)->get();
+        return view('frontend.default.customer',['var'=>$var,'status'=>$status,'count'=>$count,'lastvizit'=>$lastvizit]);
+          */
+
+       //   return view('frontend.default.customer');
+
     }
 
-    public function test()
-    {
-        return 'test';
-    }
 
 
 }

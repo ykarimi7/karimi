@@ -71,6 +71,8 @@
     <script src="{{ asset('js/core.js?version=' . env('APP_VERSION')) }}" type="text/javascript"></script>
 </head>
 <body class="@if((isset($_COOKIE['darkMode']) && $_COOKIE['darkMode'] == 'true') || (config('settings.dark_mode', true) && ! isset($_COOKIE['darkMode'])))  dark-theme @endif @if(env('MEDIA_AD_MODULE') == 'true') media-ad-enabled @endif">
+
+
 <div id="fb-root"></div>
 <div id="header-container">
     <div id="logo" class="desktop">
@@ -247,8 +249,9 @@
       @if(Auth()->user())
         <li class="side-menu-trending">
             <a href="{{ route('frontend.trending') }}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-                <span data-translate-text="CUSTOMER">{{ __('web.CUSTOMER') }}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+
+                <span data-translate-text="CUSTOMER">Customer</span>
             </a>
         </li>
       @endif
@@ -584,6 +587,13 @@
 @if(config('settings.payment_stripe'))
     <script src="https://js.stripe.com/v3/" crossorigin="anonymous"></script>
 @endif
+
+
+<script>
+
+
+</script>
+
 
 <script src="{{ asset('js/route.js?version=' . env('APP_VERSION')) }}" type="text/javascript"></script>
 <script src="{{ asset('js/engine.min.js?version=' . env('APP_VERSION')) }}" type="text/javascript"></script>

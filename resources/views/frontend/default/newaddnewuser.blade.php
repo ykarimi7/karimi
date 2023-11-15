@@ -41,21 +41,24 @@
                     <div class="card-body">
 
 
-
+                        <div class="form-group  col-lg-6 col-12 ">
+                            <label id="menu" for="exampleInputEmail1">Ad Soyad</label>
+                            <input type="text" name="name1" class="form-control"   value="{{ old('name1') }}" id="exampleInputEmail1" placeholder="name">
+                        </div>
                         <div class="col-lg-3"></div>
                         <div class="form-group  col-lg-6 col-12 ">
-                            <label id="menu" for="exampleInputEmail1">Name(Username)</label>
+                            <label id="menu" for="exampleInputEmail1">Şube Adı</label>
                             <input type="text" name="name" class="form-control"   value="{{ old('name') }}" id="exampleInputEmail1" placeholder="name">
                         </div>
                         <div class="col-lg-3"></div>
                         <div class="form-group col-lg-6 col-12 ">
-                            <label id="menu" for="exampleInputEmail1">Email</label>
+                            <label id="menu" for="exampleInputEmail1">E-Posta</label>
                             <input type="email" name="email" class="form-control"  value="{{ old('email') }}"  id="exampleInputEmail1" placeholder="email">
                         </div>
                         <div class="col-lg-3"></div>
                         <div class="form-group col-lg-6 col-12 ">
-                            <label id="menu" for="exampleInputEmail1">Telfon</label>
-                            <input type="text" name="Tel" class="form-control"   value="{{ old('tel') }}" id="exampleInputEmail1" placeholder="telfon">
+                            <label id="menu" for="tel">Telefon</label>
+                            <input type="text" name="tel" class="form-control"   value="{{ old('tel') }}" id="exampleInputEmail1" placeholder="telfon">
                         </div>
                         <div class="col-lg-3"></div>
                         <div class="form-group col-lg-6 col-12 ">
@@ -63,11 +66,6 @@
                             <input type="password" name="password" class="form-control" placeholder="Şifre"   id="exampleInputEmail1" >
                         </div>
 
-                        <div class="col-lg-3"></div>
-                        <div class="form-group col-lg-6 col-12 ">
-                            <label id="menu" for="exampleInputEmail1">Şifre Tekrari</label>
-                            <input type="password" name="repassword" class="form-control"  placeholder="Şifre Tekrari"   id="exampleInputEmail1">
-                        </div>
 
 
 

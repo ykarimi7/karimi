@@ -8,6 +8,8 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Http\Controllers\Controller;
+use App\Models\Session;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use DB;
@@ -17,8 +19,10 @@ use App\Models\Channel;
 use Route;
 use View;
 use Cache;
+use App\Models\Manauser;
+use App\Models\User;
 
-class TrendingController
+class TrendingController extends Controller
 {
     private $request;
 
@@ -114,7 +118,19 @@ class TrendingController
 
     public function customer()
     {
-        $view = View::make('customer');
+       $user=Auth()->user();
+       $status=$user->status;
+       if($status==0)
+            $status='Offline';
+       if($status==1)
+           $status='Online';
+       $lastvizit=$user->last_activity;
+       $count=Manauser::where('manager_id','=',$user->id)->count();
+       $var=Manauser::where('manager_id','=',$user->id)->get();
+
+
+
+        $view = View::make('customer',['var'=>$var,'status'=>$status,'lastvizit'=>$lastvizit,'count'=>$count,'usercount'=>$user->usercount]);
         if ($this->request->ajax()) {
 
             $sections = $view->renderSections();
@@ -142,4 +158,70 @@ class TrendingController
         }
         return $view;
     }
+
+    public function newaddnewuser1($id)
+    {
+
+        $var=User::where('id','=',$id)->first();
+
+        $view = View::make('newaddnewuser1',['var'=>$var]);
+
+        if ($this->request->ajax()) {
+
+            $sections = $view->renderSections();
+            if ($this->request->input('page') && intval($this->request->input('page')) > 1) {
+                return $sections['pagination'];
+            } else {
+                return $sections['content'];
+            }
+        }
+        return $view;
+    }
+
+
+    public function newsearch(Request $request)
+    {
+         // $this->validate($request,['date1'=>'required','date2'=>'required']);
+        $this->validate($request,['date1'=>'required','date2'=>'required']);
+
+        $date1=$request->date1;
+        $date2=$request->date2;
+        \Session::put('date1',$date1);
+        \Session::put('date2',$date2);
+         $d1=\Session::get('date1');
+         $d2=\Session::get('date2');
+
+
+        $user=Auth()->user();
+        $status=$user->status;
+        if($status==0)
+            $status='Offline';
+        if($status==1)
+            $status='Online';
+        $lastvizit=$user->last_activity;
+        $count=Manauser::where('manager_id','=',$user->id)->count();
+        $var=Manauser::where('manager_id','=',$user->id)->get();
+
+
+
+        $view = View::make('customer1',['var'=>$var,'status'=>$status,'lastvizit'=>$lastvizit,'count'=>$count,
+            'usercount'=>$user->usercount,'date1'=>$date1,'date2'=>$date2,'d1'=>$d1,'d2'=>$d2]);
+        if ($this->request->ajax()) {
+
+            $sections = $view->renderSections();
+            if ($this->request->input('page') && intval($this->request->input('page')) > 1) {
+                return $sections['pagination'];
+            } else {
+                return $sections['content'];
+            }
+        }
+        return $view;
+
+
+
+    }
+
+
+
+
 }

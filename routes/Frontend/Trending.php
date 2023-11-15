@@ -9,3 +9,6 @@ Route::get('trending/month', 'TrendingController@index')->name('trending.month')
 //new development
 Route::get('trending', 'TrendingController@customer')->name('trending');
 Route::get('newaddnewuser', 'TrendingController@newaddnewuser')->name('newaddnewuser');
+Route::get('newedituser{id}', 'TrendingController@newaddnewuser1')->name('newedituser');
+
+

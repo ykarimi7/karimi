@@ -72,6 +72,7 @@ return [
         'resources/views/frontend/default/homepage/footer.blade.php',
         'resources/views/frontend/default/landing/index.blade.php',
         'public/skins/default/css/custom.css',
+        'app/Providers/RouteServiceProvider.php'
     ],
 
 

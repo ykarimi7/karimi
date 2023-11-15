@@ -57,15 +57,17 @@ Route::group(['middleware' => 'locale'], function() {
         Route::group(['middleware' => 'auth'], function () {
             includeModuleRouteFiles();
             Route::group(['middleware' => 'role:allow_offline'], function() {
-                Route::group(['namespace' => 'Frontend', 'as' => 'frontend.'], function () {
+                Route::group(['namespace' => 'App\Http\Controllers\Frontend', 'as' => 'frontend.'], function () {
                     includeRouteFiles(__DIR__.'/Frontend/');
                 });
             });
         });
     } else {
         includeModuleRouteFiles();
-        Route::group(['namespace' => 'Frontend', 'as' => 'frontend.'], function () {
+        Route::group(['namespace' => 'App\Http\Controllers\Frontend', 'as' => 'frontend.'], function () {
             includeRouteFiles(__DIR__.'/Frontend/');
+//            Route::post('auth/signup', 'AuthController@signup')->name('api.auth.signup');
+
         });
     }
 
@@ -73,8 +75,8 @@ Route::group(['middleware' => 'locale'], function() {
      * added this routes to read api request from client if request sended to web Controllers
      * SABER
      */
-    Route::post('auth/signup', [AuthController::class , 'signup'])->name('api.auth.signup');
-    Route::post('auth/login', [AuthController::class , 'login'])->name('api.auth.login');
+    // Route::post('auth/signup', [AuthController::class , 'signup'])->name('api.auth.signup');
+    // Route::post('auth/login', [AuthController::class , 'login'])->name('api.auth.login');
 
 
 

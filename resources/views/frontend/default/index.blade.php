@@ -24,7 +24,6 @@
 
     <meta http-equiv="Content-type" content="text/html;charset={{ config('settings.charset', 'utf-8') }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1,IE=9,10">
-
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="index, follow">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
@@ -48,7 +47,6 @@
             <link rel="stylesheet" href="{{ asset($css) }}?version={{ env('APP_VERSION') }}" type="text/css">
         @endforeach
     @endif
-
     @if(config('settings.captcha'))
         <meta name="recaptcha-key" content="{{ config('settings.recaptcha_public_key') }}" />
         <script src="https://www.google.com/recaptcha/api.js?render={{ config('settings.recaptcha_public_key') }}"></script>

@@ -52,6 +52,8 @@ class Snapshot extends \Google\Collection
    * @var string
    */
   public $downloadBytes;
+  protected $guestOsFeaturesType = GuestOsFeature::class;
+  protected $guestOsFeaturesDataType = 'array';
   /**
    * @var string
    */
@@ -104,6 +106,10 @@ class Snapshot extends \Google\Collection
   public $sourceDisk;
   protected $sourceDiskEncryptionKeyType = CustomerEncryptionKey::class;
   protected $sourceDiskEncryptionKeyDataType = '';
+  /**
+   * @var string
+   */
+  public $sourceDiskForRecoveryCheckpoint;
   /**
    * @var string
    */
@@ -244,6 +250,20 @@ class Snapshot extends \Google\Collection
   public function getDownloadBytes()
   {
     return $this->downloadBytes;
+  }
+  /**
+   * @param GuestOsFeature[]
+   */
+  public function setGuestOsFeatures($guestOsFeatures)
+  {
+    $this->guestOsFeatures = $guestOsFeatures;
+  }
+  /**
+   * @return GuestOsFeature[]
+   */
+  public function getGuestOsFeatures()
+  {
+    return $this->guestOsFeatures;
   }
   /**
    * @param string
@@ -440,6 +460,20 @@ class Snapshot extends \Google\Collection
   public function getSourceDiskEncryptionKey()
   {
     return $this->sourceDiskEncryptionKey;
+  }
+  /**
+   * @param string
+   */
+  public function setSourceDiskForRecoveryCheckpoint($sourceDiskForRecoveryCheckpoint)
+  {
+    $this->sourceDiskForRecoveryCheckpoint = $sourceDiskForRecoveryCheckpoint;
+  }
+  /**
+   * @return string
+   */
+  public function getSourceDiskForRecoveryCheckpoint()
+  {
+    return $this->sourceDiskForRecoveryCheckpoint;
   }
   /**
    * @param string

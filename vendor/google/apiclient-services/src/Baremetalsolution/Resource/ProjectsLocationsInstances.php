@@ -126,7 +126,8 @@ class ProjectsLocationsInstances extends \Google\Service\Resource
    * @param array $optParams Optional parameters.
    *
    * @opt_param string updateMask The list of fields to update. The currently
-   * supported fields are: `labels` `hyperthreading_enabled` `os_image`
+   * supported fields are: `labels` `hyperthreading_enabled` `os_image` `ssh_keys`
+   * `kms_key_version`
    * @return Operation
    */
   public function patch($name, Instance $postBody, $optParams = [])

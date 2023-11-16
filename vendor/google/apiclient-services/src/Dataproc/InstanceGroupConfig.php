@@ -28,6 +28,8 @@ class InstanceGroupConfig extends \Google\Collection
    * @var string
    */
   public $imageUri;
+  protected $instanceFlexibilityPolicyType = InstanceFlexibilityPolicy::class;
+  protected $instanceFlexibilityPolicyDataType = '';
   /**
    * @var string[]
    */
@@ -60,6 +62,8 @@ class InstanceGroupConfig extends \Google\Collection
    * @var string
    */
   public $preemptibility;
+  protected $startupConfigType = StartupConfig::class;
+  protected $startupConfigDataType = '';
 
   /**
    * @param AcceleratorConfig[]
@@ -102,6 +106,20 @@ class InstanceGroupConfig extends \Google\Collection
   public function getImageUri()
   {
     return $this->imageUri;
+  }
+  /**
+   * @param InstanceFlexibilityPolicy
+   */
+  public function setInstanceFlexibilityPolicy(InstanceFlexibilityPolicy $instanceFlexibilityPolicy)
+  {
+    $this->instanceFlexibilityPolicy = $instanceFlexibilityPolicy;
+  }
+  /**
+   * @return InstanceFlexibilityPolicy
+   */
+  public function getInstanceFlexibilityPolicy()
+  {
+    return $this->instanceFlexibilityPolicy;
   }
   /**
    * @param string[]
@@ -228,6 +246,20 @@ class InstanceGroupConfig extends \Google\Collection
   public function getPreemptibility()
   {
     return $this->preemptibility;
+  }
+  /**
+   * @param StartupConfig
+   */
+  public function setStartupConfig(StartupConfig $startupConfig)
+  {
+    $this->startupConfig = $startupConfig;
+  }
+  /**
+   * @return StartupConfig
+   */
+  public function getStartupConfig()
+  {
+    return $this->startupConfig;
   }
 }
 

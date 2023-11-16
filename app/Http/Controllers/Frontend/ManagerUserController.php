@@ -72,12 +72,12 @@ class ManagerUserController extends Controller
                    ->update(['companyname'=>$name,'tel'=>$phone]);
     }
 
-    public function del($id)
+    public function del(Request $request)
     {
-
+         $id = $request->id;
          User::where('id','=',$id)->delete();
          Manauser::where('user_id','=',$id)->delete();
-         return redirect('/trending');
+         return redirect('/trending')->with('success','User deleted successfully');
 
     }
 

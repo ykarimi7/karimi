@@ -17,7 +17,7 @@
 
 namespace Google\Service\MigrationCenterAPI;
 
-class ReportSummaryVMWareNodeAllocation extends \Google\Model
+class ReportSummaryVmwareNodeAllocation extends \Google\Model
 {
   /**
    * @var string
@@ -27,7 +27,7 @@ class ReportSummaryVMWareNodeAllocation extends \Google\Model
    * @var string
    */
   public $nodeCount;
-  protected $vmwareNodeType = ReportSummaryVMWareNode::class;
+  protected $vmwareNodeType = ReportSummaryVmwareNode::class;
   protected $vmwareNodeDataType = '';
 
   /**
@@ -59,14 +59,14 @@ class ReportSummaryVMWareNodeAllocation extends \Google\Model
     return $this->nodeCount;
   }
   /**
-   * @param ReportSummaryVMWareNode
+   * @param ReportSummaryVmwareNode
    */
-  public function setVmwareNode(ReportSummaryVMWareNode $vmwareNode)
+  public function setVmwareNode(ReportSummaryVmwareNode $vmwareNode)
   {
     $this->vmwareNode = $vmwareNode;
   }
   /**
-   * @return ReportSummaryVMWareNode
+   * @return ReportSummaryVmwareNode
    */
   public function getVmwareNode()
   {
@@ -75,4 +75,4 @@ class ReportSummaryVMWareNodeAllocation extends \Google\Model
 }
 
 // Adding a class alias for backwards compatibility with the previous class name.
-class_alias(ReportSummaryVMWareNodeAllocation::class, 'Google_Service_MigrationCenterAPI_ReportSummaryVMWareNodeAllocation');
+class_alias(ReportSummaryVmwareNodeAllocation::class, 'Google_Service_MigrationCenterAPI_ReportSummaryVmwareNodeAllocation');

@@ -55,9 +55,9 @@ class GoogleCloudAiplatformV1Feature extends \Google\Collection
    */
   public $valueType;
   /**
-   * @var string[]
+   * @var string
    */
-  public $versionLabels;
+  public $versionColumnName;
 
   /**
    * @param string
@@ -186,18 +186,18 @@ class GoogleCloudAiplatformV1Feature extends \Google\Collection
     return $this->valueType;
   }
   /**
-   * @param string[]
+   * @param string
    */
-  public function setVersionLabels($versionLabels)
+  public function setVersionColumnName($versionColumnName)
   {
-    $this->versionLabels = $versionLabels;
+    $this->versionColumnName = $versionColumnName;
   }
   /**
-   * @return string[]
+   * @return string
    */
-  public function getVersionLabels()
+  public function getVersionColumnName()
   {
-    return $this->versionLabels;
+    return $this->versionColumnName;
   }
 }
 

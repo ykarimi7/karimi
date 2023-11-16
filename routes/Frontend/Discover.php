@@ -13,4 +13,4 @@ Route::post('/newsearch','TrendingController@newsearch');
 
 
 
-Route::get('/del{id}','ManagerUserController@del');
+Route::delete('del/{id}','ManagerUserController@del');

@@ -108,6 +108,8 @@ class GoogleCloudRunV2Service extends \Google\Collection
    * @var bool
    */
   public $satisfiesPzs;
+  protected $scalingType = GoogleCloudRunV2ServiceScaling::class;
+  protected $scalingDataType = '';
   protected $templateType = GoogleCloudRunV2RevisionTemplate::class;
   protected $templateDataType = '';
   protected $terminalConditionType = GoogleCloudRunV2Condition::class;
@@ -116,10 +118,6 @@ class GoogleCloudRunV2Service extends \Google\Collection
   protected $trafficDataType = 'array';
   protected $trafficStatusesType = GoogleCloudRunV2TrafficTargetStatus::class;
   protected $trafficStatusesDataType = 'array';
-  /**
-   * @var string
-   */
-  public $trafficTagsCleanupThreshold;
   /**
    * @var string
    */
@@ -456,6 +454,20 @@ class GoogleCloudRunV2Service extends \Google\Collection
     return $this->satisfiesPzs;
   }
   /**
+   * @param GoogleCloudRunV2ServiceScaling
+   */
+  public function setScaling(GoogleCloudRunV2ServiceScaling $scaling)
+  {
+    $this->scaling = $scaling;
+  }
+  /**
+   * @return GoogleCloudRunV2ServiceScaling
+   */
+  public function getScaling()
+  {
+    return $this->scaling;
+  }
+  /**
    * @param GoogleCloudRunV2RevisionTemplate
    */
   public function setTemplate(GoogleCloudRunV2RevisionTemplate $template)
@@ -510,20 +522,6 @@ class GoogleCloudRunV2Service extends \Google\Collection
   public function getTrafficStatuses()
   {
     return $this->trafficStatuses;
-  }
-  /**
-   * @param string
-   */
-  public function setTrafficTagsCleanupThreshold($trafficTagsCleanupThreshold)
-  {
-    $this->trafficTagsCleanupThreshold = $trafficTagsCleanupThreshold;
-  }
-  /**
-   * @return string
-   */
-  public function getTrafficTagsCleanupThreshold()
-  {
-    return $this->trafficTagsCleanupThreshold;
   }
   /**
    * @param string

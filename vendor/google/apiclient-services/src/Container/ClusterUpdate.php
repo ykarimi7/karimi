@@ -98,6 +98,8 @@ class ClusterUpdate extends \Google\Collection
   protected $desiredNetworkPerformanceConfigDataType = '';
   protected $desiredNodePoolAutoConfigNetworkTagsType = NetworkTags::class;
   protected $desiredNodePoolAutoConfigNetworkTagsDataType = '';
+  protected $desiredNodePoolAutoConfigResourceManagerTagsType = ResourceManagerTags::class;
+  protected $desiredNodePoolAutoConfigResourceManagerTagsDataType = '';
   protected $desiredNodePoolAutoscalingType = NodePoolAutoscaling::class;
   protected $desiredNodePoolAutoscalingDataType = '';
   /**
@@ -112,6 +114,8 @@ class ClusterUpdate extends \Google\Collection
   public $desiredNodeVersion;
   protected $desiredNotificationConfigType = NotificationConfig::class;
   protected $desiredNotificationConfigDataType = '';
+  protected $desiredParentProductConfigType = ParentProductConfig::class;
+  protected $desiredParentProductConfigDataType = '';
   protected $desiredPrivateClusterConfigType = PrivateClusterConfig::class;
   protected $desiredPrivateClusterConfigDataType = '';
   /**
@@ -580,6 +584,20 @@ class ClusterUpdate extends \Google\Collection
     return $this->desiredNodePoolAutoConfigNetworkTags;
   }
   /**
+   * @param ResourceManagerTags
+   */
+  public function setDesiredNodePoolAutoConfigResourceManagerTags(ResourceManagerTags $desiredNodePoolAutoConfigResourceManagerTags)
+  {
+    $this->desiredNodePoolAutoConfigResourceManagerTags = $desiredNodePoolAutoConfigResourceManagerTags;
+  }
+  /**
+   * @return ResourceManagerTags
+   */
+  public function getDesiredNodePoolAutoConfigResourceManagerTags()
+  {
+    return $this->desiredNodePoolAutoConfigResourceManagerTags;
+  }
+  /**
    * @param NodePoolAutoscaling
    */
   public function setDesiredNodePoolAutoscaling(NodePoolAutoscaling $desiredNodePoolAutoscaling)
@@ -648,6 +666,20 @@ class ClusterUpdate extends \Google\Collection
   public function getDesiredNotificationConfig()
   {
     return $this->desiredNotificationConfig;
+  }
+  /**
+   * @param ParentProductConfig
+   */
+  public function setDesiredParentProductConfig(ParentProductConfig $desiredParentProductConfig)
+  {
+    $this->desiredParentProductConfig = $desiredParentProductConfig;
+  }
+  /**
+   * @return ParentProductConfig
+   */
+  public function getDesiredParentProductConfig()
+  {
+    return $this->desiredParentProductConfig;
   }
   /**
    * @param PrivateClusterConfig

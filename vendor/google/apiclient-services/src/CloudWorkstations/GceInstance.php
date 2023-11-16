@@ -20,8 +20,6 @@ namespace Google\Service\CloudWorkstations;
 class GceInstance extends \Google\Collection
 {
   protected $collection_key = 'tags';
-  protected $acceleratorsType = Accelerator::class;
-  protected $acceleratorsDataType = 'array';
   /**
    * @var int
    */
@@ -52,6 +50,10 @@ class GceInstance extends \Google\Collection
    * @var string
    */
   public $serviceAccount;
+  /**
+   * @var string[]
+   */
+  public $serviceAccountScopes;
   protected $shieldedInstanceConfigType = GceShieldedInstanceConfig::class;
   protected $shieldedInstanceConfigDataType = '';
   /**
@@ -59,20 +61,6 @@ class GceInstance extends \Google\Collection
    */
   public $tags;
 
-  /**
-   * @param Accelerator[]
-   */
-  public function setAccelerators($accelerators)
-  {
-    $this->accelerators = $accelerators;
-  }
-  /**
-   * @return Accelerator[]
-   */
-  public function getAccelerators()
-  {
-    return $this->accelerators;
-  }
   /**
    * @param int
    */
@@ -184,6 +172,20 @@ class GceInstance extends \Google\Collection
   public function getServiceAccount()
   {
     return $this->serviceAccount;
+  }
+  /**
+   * @param string[]
+   */
+  public function setServiceAccountScopes($serviceAccountScopes)
+  {
+    $this->serviceAccountScopes = $serviceAccountScopes;
+  }
+  /**
+   * @return string[]
+   */
+  public function getServiceAccountScopes()
+  {
+    return $this->serviceAccountScopes;
   }
   /**
    * @param GceShieldedInstanceConfig

@@ -66,8 +66,6 @@ Route::group(['middleware' => 'locale'], function() {
         includeModuleRouteFiles();
         Route::group(['namespace' => 'App\Http\Controllers\Frontend', 'as' => 'frontend.'], function () {
             includeRouteFiles(__DIR__.'/Frontend/');
-//            Route::post('auth/signup', 'AuthController@signup')->name('api.auth.signup');
-
         });
     }
 

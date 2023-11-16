@@ -19,7 +19,7 @@ namespace Google\Service\VMMigrationService;
 
 class AwsSourceVmDetails extends \Google\Collection
 {
-  protected $collection_key = 'vmCapabilities';
+  protected $collection_key = 'disks';
   /**
    * @var string
    */
@@ -30,10 +30,8 @@ class AwsSourceVmDetails extends \Google\Collection
    * @var string
    */
   public $firmware;
-  /**
-   * @var string[]
-   */
-  public $vmCapabilities;
+  protected $vmCapabilitiesInfoType = VmCapabilities::class;
+  protected $vmCapabilitiesInfoDataType = '';
 
   /**
    * @param string
@@ -78,18 +76,18 @@ class AwsSourceVmDetails extends \Google\Collection
     return $this->firmware;
   }
   /**
-   * @param string[]
+   * @param VmCapabilities
    */
-  public function setVmCapabilities($vmCapabilities)
+  public function setVmCapabilitiesInfo(VmCapabilities $vmCapabilitiesInfo)
   {
-    $this->vmCapabilities = $vmCapabilities;
+    $this->vmCapabilitiesInfo = $vmCapabilitiesInfo;
   }
   /**
-   * @return string[]
+   * @return VmCapabilities
    */
-  public function getVmCapabilities()
+  public function getVmCapabilitiesInfo()
   {
-    return $this->vmCapabilities;
+    return $this->vmCapabilitiesInfo;
   }
 }
 

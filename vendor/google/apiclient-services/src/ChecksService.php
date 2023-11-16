@@ -37,9 +37,10 @@ class ChecksService extends \Google\Service
 {
 
 
+  public $accounts_apps;
   public $accounts_apps_operations;
-  public $privacypolicy;
-  public $projects_privacypolicy_operations;
+  public $accounts_apps_reports;
+  public $media;
 
   /**
    * Constructs the internal representation of the ChecksService service.
@@ -57,6 +58,44 @@ class ChecksService extends \Google\Service
     $this->version = 'v1alpha';
     $this->serviceName = 'checks';
 
+    $this->accounts_apps = new ChecksService\Resource\AccountsApps(
+        $this,
+        $this->serviceName,
+        'apps',
+        [
+          'methods' => [
+            'get' => [
+              'path' => 'v1alpha/{+name}',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'list' => [
+              'path' => 'v1alpha/{+parent}/apps',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
     $this->accounts_apps_operations = new ChecksService\Resource\AccountsAppsOperations(
         $this,
         $this->serviceName,
@@ -129,47 +168,13 @@ class ChecksService extends \Google\Service
           ]
         ]
     );
-    $this->privacypolicy = new ChecksService\Resource\Privacypolicy(
+    $this->accounts_apps_reports = new ChecksService\Resource\AccountsAppsReports(
         $this,
         $this->serviceName,
-        'privacypolicy',
+        'reports',
         [
           'methods' => [
-            'analyze' => [
-              'path' => 'v1alpha/privacypolicy:analyze',
-              'httpMethod' => 'POST',
-              'parameters' => [],
-            ],
-          ]
-        ]
-    );
-    $this->projects_privacypolicy_operations = new ChecksService\Resource\ProjectsPrivacypolicyOperations(
-        $this,
-        $this->serviceName,
-        'operations',
-        [
-          'methods' => [
-            'cancel' => [
-              'path' => 'v1alpha/{+name}:cancel',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'name' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'delete' => [
-              'path' => 'v1alpha/{+name}',
-              'httpMethod' => 'DELETE',
-              'parameters' => [
-                'name' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'get' => [
+            'get' => [
               'path' => 'v1alpha/{+name}',
               'httpMethod' => 'GET',
               'parameters' => [
@@ -177,16 +182,24 @@ class ChecksService extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ],
+                'checksFilter' => [
+                  'location' => 'query',
+                  'type' => 'string',
                 ],
               ],
             ],'list' => [
-              'path' => 'v1alpha/{+name}/privacypolicy/operations',
+              'path' => 'v1alpha/{+parent}/reports',
               'httpMethod' => 'GET',
               'parameters' => [
-                'name' => [
+                'parent' => [
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ],
+                'checksFilter' => [
+                  'location' => 'query',
+                  'type' => 'string',
                 ],
                 'filter' => [
                   'location' => 'query',
@@ -201,18 +214,24 @@ class ChecksService extends \Google\Service
                   'type' => 'string',
                 ],
               ],
-            ],'wait' => [
-              'path' => 'v1alpha/{+name}:wait',
+            ],
+          ]
+        ]
+    );
+    $this->media = new ChecksService\Resource\Media(
+        $this,
+        $this->serviceName,
+        'media',
+        [
+          'methods' => [
+            'upload' => [
+              'path' => 'v1alpha/{+parent}/reports:analyzeUpload',
               'httpMethod' => 'POST',
               'parameters' => [
-                'name' => [
+                'parent' => [
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
-                ],
-                'timeout' => [
-                  'location' => 'query',
-                  'type' => 'string',
                 ],
               ],
             ],

@@ -17,7 +17,7 @@
 
 namespace Google\Service\MigrationCenterAPI;
 
-class ReportSummaryVMWareNode extends \Google\Model
+class ReportSummaryVmwareNode extends \Google\Model
 {
   /**
    * @var string
@@ -41,4 +41,4 @@ class ReportSummaryVMWareNode extends \Google\Model
 }
 
 // Adding a class alias for backwards compatibility with the previous class name.
-class_alias(ReportSummaryVMWareNode::class, 'Google_Service_MigrationCenterAPI_ReportSummaryVMWareNode');
+class_alias(ReportSummaryVmwareNode::class, 'Google_Service_MigrationCenterAPI_ReportSummaryVmwareNode');

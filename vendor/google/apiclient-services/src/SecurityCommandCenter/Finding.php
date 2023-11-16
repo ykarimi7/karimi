@@ -80,6 +80,10 @@ class Finding extends \Google\Collection
   protected $kernelRootkitDataType = '';
   protected $kubernetesType = Kubernetes::class;
   protected $kubernetesDataType = '';
+  protected $loadBalancersType = LoadBalancer::class;
+  protected $loadBalancersDataType = 'array';
+  protected $logEntriesType = LogEntry::class;
+  protected $logEntriesDataType = 'array';
   protected $mitreAttackType = MitreAttack::class;
   protected $mitreAttackDataType = '';
   /**
@@ -106,6 +110,8 @@ class Finding extends \Google\Collection
    * @var string
    */
   public $nextSteps;
+  protected $orgPoliciesType = OrgPolicy::class;
+  protected $orgPoliciesDataType = 'array';
   /**
    * @var string
    */
@@ -122,6 +128,8 @@ class Finding extends \Google\Collection
   public $resourceName;
   protected $securityMarksType = SecurityMarks::class;
   protected $securityMarksDataType = '';
+  protected $securityPostureType = SecurityPosture::class;
+  protected $securityPostureDataType = '';
   /**
    * @var string
    */
@@ -460,6 +468,34 @@ class Finding extends \Google\Collection
     return $this->kubernetes;
   }
   /**
+   * @param LoadBalancer[]
+   */
+  public function setLoadBalancers($loadBalancers)
+  {
+    $this->loadBalancers = $loadBalancers;
+  }
+  /**
+   * @return LoadBalancer[]
+   */
+  public function getLoadBalancers()
+  {
+    return $this->loadBalancers;
+  }
+  /**
+   * @param LogEntry[]
+   */
+  public function setLogEntries($logEntries)
+  {
+    $this->logEntries = $logEntries;
+  }
+  /**
+   * @return LogEntry[]
+   */
+  public function getLogEntries()
+  {
+    return $this->logEntries;
+  }
+  /**
    * @param MitreAttack
    */
   public function setMitreAttack(MitreAttack $mitreAttack)
@@ -558,6 +594,20 @@ class Finding extends \Google\Collection
     return $this->nextSteps;
   }
   /**
+   * @param OrgPolicy[]
+   */
+  public function setOrgPolicies($orgPolicies)
+  {
+    $this->orgPolicies = $orgPolicies;
+  }
+  /**
+   * @return OrgPolicy[]
+   */
+  public function getOrgPolicies()
+  {
+    return $this->orgPolicies;
+  }
+  /**
    * @param string
    */
   public function setParent($parent)
@@ -626,6 +676,20 @@ class Finding extends \Google\Collection
   public function getSecurityMarks()
   {
     return $this->securityMarks;
+  }
+  /**
+   * @param SecurityPosture
+   */
+  public function setSecurityPosture(SecurityPosture $securityPosture)
+  {
+    $this->securityPosture = $securityPosture;
+  }
+  /**
+   * @return SecurityPosture
+   */
+  public function getSecurityPosture()
+  {
+    return $this->securityPosture;
   }
   /**
    * @param string

@@ -29,6 +29,14 @@ class UpdateNodePoolRequest extends \Google\Collection
   /**
    * @var string
    */
+  public $diskSizeGb;
+  /**
+   * @var string
+   */
+  public $diskType;
+  /**
+   * @var string
+   */
   public $etag;
   protected $fastSocketType = FastSocket::class;
   protected $fastSocketDataType = '';
@@ -55,6 +63,10 @@ class UpdateNodePoolRequest extends \Google\Collection
   /**
    * @var string
    */
+  public $machineType;
+  /**
+   * @var string
+   */
   public $name;
   protected $nodeNetworkConfigType = NodeNetworkConfig::class;
   protected $nodeNetworkConfigDataType = '';
@@ -72,6 +84,8 @@ class UpdateNodePoolRequest extends \Google\Collection
   public $projectId;
   protected $resourceLabelsType = ResourceLabels::class;
   protected $resourceLabelsDataType = '';
+  protected $resourceManagerTagsType = ResourceManagerTags::class;
+  protected $resourceManagerTagsDataType = '';
   protected $tagsType = NetworkTags::class;
   protected $tagsDataType = '';
   protected $taintsType = NodeTaints::class;
@@ -114,6 +128,34 @@ class UpdateNodePoolRequest extends \Google\Collection
   public function getConfidentialNodes()
   {
     return $this->confidentialNodes;
+  }
+  /**
+   * @param string
+   */
+  public function setDiskSizeGb($diskSizeGb)
+  {
+    $this->diskSizeGb = $diskSizeGb;
+  }
+  /**
+   * @return string
+   */
+  public function getDiskSizeGb()
+  {
+    return $this->diskSizeGb;
+  }
+  /**
+   * @param string
+   */
+  public function setDiskType($diskType)
+  {
+    $this->diskType = $diskType;
+  }
+  /**
+   * @return string
+   */
+  public function getDiskType()
+  {
+    return $this->diskType;
   }
   /**
    * @param string
@@ -258,6 +300,20 @@ class UpdateNodePoolRequest extends \Google\Collection
   /**
    * @param string
    */
+  public function setMachineType($machineType)
+  {
+    $this->machineType = $machineType;
+  }
+  /**
+   * @return string
+   */
+  public function getMachineType()
+  {
+    return $this->machineType;
+  }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
@@ -338,6 +394,20 @@ class UpdateNodePoolRequest extends \Google\Collection
   public function getResourceLabels()
   {
     return $this->resourceLabels;
+  }
+  /**
+   * @param ResourceManagerTags
+   */
+  public function setResourceManagerTags(ResourceManagerTags $resourceManagerTags)
+  {
+    $this->resourceManagerTags = $resourceManagerTags;
+  }
+  /**
+   * @return ResourceManagerTags
+   */
+  public function getResourceManagerTags()
+  {
+    return $this->resourceManagerTags;
   }
   /**
    * @param NetworkTags

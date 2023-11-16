@@ -17,7 +17,7 @@
 
 namespace Google\Service\MigrationCenterAPI;
 
-class ReportSummaryVMWareEngineFinding extends \Google\Collection
+class ReportSummaryVmwareEngineFinding extends \Google\Collection
 {
   protected $collection_key = 'nodeAllocations';
   /**
@@ -28,7 +28,7 @@ class ReportSummaryVMWareEngineFinding extends \Google\Collection
    * @var string[]
    */
   public $allocatedRegions;
-  protected $nodeAllocationsType = ReportSummaryVMWareNodeAllocation::class;
+  protected $nodeAllocationsType = ReportSummaryVmwareNodeAllocation::class;
   protected $nodeAllocationsDataType = 'array';
 
   /**
@@ -60,14 +60,14 @@ class ReportSummaryVMWareEngineFinding extends \Google\Collection
     return $this->allocatedRegions;
   }
   /**
-   * @param ReportSummaryVMWareNodeAllocation[]
+   * @param ReportSummaryVmwareNodeAllocation[]
    */
   public function setNodeAllocations($nodeAllocations)
   {
     $this->nodeAllocations = $nodeAllocations;
   }
   /**
-   * @return ReportSummaryVMWareNodeAllocation[]
+   * @return ReportSummaryVmwareNodeAllocation[]
    */
   public function getNodeAllocations()
   {
@@ -76,4 +76,4 @@ class ReportSummaryVMWareEngineFinding extends \Google\Collection
 }
 
 // Adding a class alias for backwards compatibility with the previous class name.
-class_alias(ReportSummaryVMWareEngineFinding::class, 'Google_Service_MigrationCenterAPI_ReportSummaryVMWareEngineFinding');
+class_alias(ReportSummaryVmwareEngineFinding::class, 'Google_Service_MigrationCenterAPI_ReportSummaryVmwareEngineFinding');

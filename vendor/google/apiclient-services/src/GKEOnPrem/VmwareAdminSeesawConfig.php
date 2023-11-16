@@ -35,6 +35,10 @@ class VmwareAdminSeesawConfig extends \Google\Collection
    */
   public $masterIp;
   /**
+   * @var string
+   */
+  public $stackdriverName;
+  /**
    * @var string[]
    */
   public $vms;
@@ -94,6 +98,20 @@ class VmwareAdminSeesawConfig extends \Google\Collection
   public function getMasterIp()
   {
     return $this->masterIp;
+  }
+  /**
+   * @param string
+   */
+  public function setStackdriverName($stackdriverName)
+  {
+    $this->stackdriverName = $stackdriverName;
+  }
+  /**
+   * @return string
+   */
+  public function getStackdriverName()
+  {
+    return $this->stackdriverName;
   }
   /**
    * @param string[]

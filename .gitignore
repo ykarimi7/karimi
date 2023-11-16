@@ -3,7 +3,8 @@ sitemap.xml
 node_modules/
 npm-debug.log
 yarn-error.log
-
+/vendor
+vendor
 # Laravel 4 specific
 bootstrap/compiled.php
 app/storage/
@@ -42,3 +43,5 @@ Homestead.json
 /app/Modules/Tickets/
 /app/Modules/ArtistSubscription/
 /app/Modules/TrendingAlbums/
+vendor
+/vendor

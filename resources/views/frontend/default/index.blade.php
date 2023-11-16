@@ -56,6 +56,8 @@
           type="text/css">
     <link rel="stylesheet" href="{{ asset('skins/default/css/custom.css?version=' . env('APP_VERSION')) }}"
           type="text/css">
+          <script src=" https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.all.min.js "></script>
+<link href=" https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.min.css " rel="stylesheet">
 
     @if(is_array(config('modules.css')))
         @foreach(config('modules.css') as $css)
@@ -326,18 +328,7 @@
             </li>
         @endif
 
-<<<<<<< HEAD
-      @if(Auth()->user())
-        <li class="side-menu-trending">
-            <a href="{{ route('frontend.trending') }}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-
-                <span data-translate-text="CUSTOMER">Customer</span>
-            </a>
-        </li>
-      @endif
-=======
-        @auth
+        @if(auth()->user())
             <li class="side-menu-trending">
                 <a href="{{ route('frontend.trending') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -347,8 +338,7 @@
                     <span data-translate-text="CUSTOMER">{{ __('web.CUSTOMER') }}</span>
                 </a>
             </li>
-        @endauth
->>>>>>> fa3c88e86d526cda9f7155d02bd03722c08b3d4f
+        @endif
 
         @if(config('settings.module_store', true))
             <li class="side-menu-store">
@@ -762,16 +752,13 @@
 @endif
 
 
-<script>
-
-
-</script>
-
 
 <script src="{{ asset('js/route.js?version=' . env('APP_VERSION')) }}" type="text/javascript"></script>
 <script src="{{ asset('js/engine.min.js?version=' . env('APP_VERSION')) }}" type="text/javascript"></script>
 <script src="{{ asset('skins/default/js/custom.js?version=' . env('APP_VERSION')) }}" type="text/javascript"></script>
 <script src="{{ asset('embed/embed.js?skin=embedplayer10&icon_set=radius&version=' . env('APP_VERSION')) }}"
         type="text/javascript"></script>
+
+        @yield('script')
 </body>
 </html>

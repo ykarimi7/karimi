@@ -26,6 +26,8 @@ class GeostoreFeatureProto extends \Google\Collection
   protected $addressDataType = 'array';
   protected $anchoredGeometryType = GeostoreAnchoredGeometryProto::class;
   protected $anchoredGeometryDataType = '';
+  protected $associatedEvChargingStationType = GeostoreFeatureIdProto::class;
+  protected $associatedEvChargingStationDataType = 'array';
   protected $attachmentType = GeostoreAttachmentsAttachmentProto::class;
   protected $attachmentDataType = 'array';
   protected $attributeType = GeostoreAttributeProto::class;
@@ -50,6 +52,8 @@ class GeostoreFeatureProto extends \Google\Collection
   protected $dataSourceDataType = '';
   protected $displayDataType = GeostoreDisplayDataProto::class;
   protected $displayDataDataType = '';
+  protected $disputedAreaType = GeostoreDisputedAreaProto::class;
+  protected $disputedAreaDataType = '';
   protected $doodleType = GeostoreDoodleProto::class;
   protected $doodleDataType = '';
   protected $elevationType = GeostoreElevationProto::class;
@@ -69,6 +73,8 @@ class GeostoreFeatureProto extends \Google\Collection
   protected $geometry3dType = GeostoreGeometryStoreReferenceProto::class;
   protected $geometry3dDataType = '';
   public $geometryPrecisionMeters;
+  protected $geopoliticalType = GeostoreGeopoliticalProto::class;
+  protected $geopoliticalDataType = '';
   protected $geopoliticalGeometryType = GeostoreGeopoliticalGeometryProto::class;
   protected $geopoliticalGeometryDataType = '';
   protected $htmlTextType = GeostoreHtmlTextProto::class;
@@ -173,6 +179,8 @@ class GeostoreFeatureProto extends \Google\Collection
   protected $statusDataType = '';
   protected $storefrontGeometryType = GeostoreAnchoredGeometryProto::class;
   protected $storefrontGeometryDataType = 'array';
+  protected $storefrontGeometryModelType = GeostoreGeometryStoreReferenceProto::class;
+  protected $storefrontGeometryModelDataType = '';
   /**
    * @var bool
    */
@@ -245,6 +253,20 @@ class GeostoreFeatureProto extends \Google\Collection
   public function getAnchoredGeometry()
   {
     return $this->anchoredGeometry;
+  }
+  /**
+   * @param GeostoreFeatureIdProto[]
+   */
+  public function setAssociatedEvChargingStation($associatedEvChargingStation)
+  {
+    $this->associatedEvChargingStation = $associatedEvChargingStation;
+  }
+  /**
+   * @return GeostoreFeatureIdProto[]
+   */
+  public function getAssociatedEvChargingStation()
+  {
+    return $this->associatedEvChargingStation;
   }
   /**
    * @param GeostoreAttachmentsAttachmentProto[]
@@ -415,6 +437,20 @@ class GeostoreFeatureProto extends \Google\Collection
     return $this->displayData;
   }
   /**
+   * @param GeostoreDisputedAreaProto
+   */
+  public function setDisputedArea(GeostoreDisputedAreaProto $disputedArea)
+  {
+    $this->disputedArea = $disputedArea;
+  }
+  /**
+   * @return GeostoreDisputedAreaProto
+   */
+  public function getDisputedArea()
+  {
+    return $this->disputedArea;
+  }
+  /**
    * @param GeostoreDoodleProto
    */
   public function setDoodle(GeostoreDoodleProto $doodle)
@@ -547,6 +583,20 @@ class GeostoreFeatureProto extends \Google\Collection
   public function getGeometryPrecisionMeters()
   {
     return $this->geometryPrecisionMeters;
+  }
+  /**
+   * @param GeostoreGeopoliticalProto
+   */
+  public function setGeopolitical(GeostoreGeopoliticalProto $geopolitical)
+  {
+    $this->geopolitical = $geopolitical;
+  }
+  /**
+   * @return GeostoreGeopoliticalProto
+   */
+  public function getGeopolitical()
+  {
+    return $this->geopolitical;
   }
   /**
    * @param GeostoreGeopoliticalGeometryProto
@@ -1261,6 +1311,20 @@ class GeostoreFeatureProto extends \Google\Collection
   public function getStorefrontGeometry()
   {
     return $this->storefrontGeometry;
+  }
+  /**
+   * @param GeostoreGeometryStoreReferenceProto
+   */
+  public function setStorefrontGeometryModel(GeostoreGeometryStoreReferenceProto $storefrontGeometryModel)
+  {
+    $this->storefrontGeometryModel = $storefrontGeometryModel;
+  }
+  /**
+   * @return GeostoreGeometryStoreReferenceProto
+   */
+  public function getStorefrontGeometryModel()
+  {
+    return $this->storefrontGeometryModel;
   }
   /**
    * @param bool

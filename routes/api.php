@@ -22,7 +22,7 @@ Route::group(['middleware' => 'locale'], function() {
      * Namespaces indicate folder structure
      */
 
-    Route::group(['laroute' => false, 'prefix' => env('APP_ADMIN_PATH', 'admin'), 'namespace' => 'Backend', 'as' => 'backend.'], function() {
+    Route::group(['laroute' => false, 'prefix' => env('APP_ADMIN_PATH', 'admin'), 'namespace' => 'App\Http\Controllers\Backend', 'as' => 'backend.'], function() {
         Route::get('login', ['uses' => 'AdminAuthController@getLogin'])->name('login');
         Route::post('login', ['uses' => 'AdminAuthController@postLogin'])->name('login.post');
         Route::get('logout', ['uses' => 'AdminAuthController@getLogout'])->name('logout');
@@ -32,7 +32,7 @@ Route::group(['middleware' => 'locale'], function() {
         Route::get('reset-password/{token}', ['uses' => 'AdminAuthController@resetPassword'])->name('reset-password');
     });
 
-    Route::group(['laroute' => false, 'middleware' => 'Admin', 'prefix' => env('APP_ADMIN_PATH', 'admin'), 'namespace' => 'Backend', 'as' => 'backend.'], function() {
+    Route::group(['laroute' => false, 'middleware' => 'Admin', 'prefix' => env('APP_ADMIN_PATH', 'admin'), 'namespace' => 'App\Http\Controllers\Backend', 'as' => 'backend.'], function() {
         includeAdminModuleRouteFiles();
         includeRouteFiles(__DIR__.'/Backend/');
     });

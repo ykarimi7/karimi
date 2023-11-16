@@ -183,7 +183,7 @@ return [
         Torann\LaravelMetaTags\MetaTagsServiceProvider::class,
         Laravel\Passport\PassportServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
-        Pbmedia\LaravelFFMpeg\FFMpegServiceProvider::class
+        Pbmedia\LaravelFFMpeg\FFMpegServiceProvider::class,
     ],
 
     /*
@@ -239,6 +239,7 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
         'FFMpeg' => Pbmedia\LaravelFFMpeg\FFMpegFacade::class,
-        'Advert' => App\Advert\Facade\AdvertFacade::class
+        'Advert' => App\Advert\Facade\AdvertFacade::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 ];

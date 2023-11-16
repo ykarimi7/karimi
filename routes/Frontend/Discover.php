@@ -10,6 +10,7 @@ Route::post('/newaddnewuser','ManagerUserController@newaddnewuser');
 Route::post('newedituser{id}','ManagerUserController@newedituser')->name('newedituser');
 Route::post('newedituser','ManagerUserController@newedituser')->name('newedituser');
 Route::post('/newsearch','TrendingController@newsearch');
+Route::post('/exportPdf','TrendingController@exportPdf');
 
 
 

@@ -21,6 +21,8 @@ use View;
 use Cache;
 use App\Models\Manauser;
 use App\Models\User;
+use PDF;
+use Illuminate\Support\Facades\Log;
 
 class TrendingController extends Controller
 {
@@ -181,7 +183,6 @@ class TrendingController extends Controller
 
     public function newsearch(Request $request)
     {
-         // $this->validate($request,['date1'=>'required','date2'=>'required']);
         $this->validate($request,['date1'=>'required','date2'=>'required']);
 
         $date1=$request->date1;
@@ -199,8 +200,11 @@ class TrendingController extends Controller
         if($status==1)
             $status='Online';
         $lastvizit=$user->last_activity;
-        $count=Manauser::where('manager_id','=',$user->id)->count();
-        $var=Manauser::where('manager_id','=',$user->id)->get();
+        $count=Manauser::where('manager_id','=',$user->id)->whereBetween('created_at', [$request->date1, $request->date2])->count();
+        $var=Manauser::
+        where('manager_id','=',$user->id)
+        ->whereBetween('created_at', [$request->date1, $request->date2])
+        ->get();
 
 
 
@@ -216,11 +220,57 @@ class TrendingController extends Controller
             }
         }
         return $view;
-
-
-
     }
 
+    public function exportPdf(Request $request)
+    {
+        try {
+            $this->validate($request, ['date1' => 'required', 'date2' => 'required']);
+    
+            $date1 = $request->date1;
+            $date2 = $request->date2;
+            \Session::put('date1', $date1);
+            \Session::put('date2', $date2);
+            $d1 = \Session::get('date1');
+            $d2 = \Session::get('date2');
+    
+            $user = Auth()->user();
+            $status = $user->status;
+            $status = $status == 0 ? 'Offline' : 'Online';
+    
+            $lastvizit = $user->last_activity;
+            $count = Manauser::where('manager_id', '=', $user->id)
+                ->whereBetween('created_at', [$request->date1, $request->date2])
+                ->count();
+    
+            $var = Manauser::where('manager_id', '=', $user->id)
+                ->whereBetween('created_at', [$request->date1, $request->date2])
+                ->get();
+    
+            $data = [
+                'items' => $var,
+                'status' => $status,
+                'lastvizit' => $lastvizit,
+                'count' => $count,
+                'usercount' => $user->usercount,
+                'date1' => $date1,
+                'date2' => $date2,
+                'd1' => $d1,
+                'd2' => $d2,
+            ];
+    
+            $pdf = PDF::loadView('frontend.default.exports.pdf.customerFiltered', $data);
+            $pdf->setPaper('A4');
+    
+            info('Export PDF method called successfully.');
+            info('PDF generated successfully.');
+    
+            return $pdf->stream('customerFiltered.pdf');
+        } catch (\Exception $e) {
+            // error('Error generating PDF: ' . $e->getMessage());
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+    }
 
 
 

@@ -106,11 +106,6 @@
 
                                 </form>
 
-
-
-                                <a style="color: #800a0a" class="delete-user" href="" data-id="{{ $userinfo->id }}">
-
-                                </a>
                                 <a style="color:#0b2e13" href="{{ route('frontend.newedituser', $userinfo->id) }}">
                                     <svg width="24" stroke-width="1.5" height="16" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">

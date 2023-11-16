@@ -158,12 +158,13 @@
                 .then((willDelete) => {
                     if (willDelete) {
                         form.submit();
-                    }
-                    Swal.fire({
+                        Swal.fire({
                         title: "Success!",
                         text: "user successfuly deleted!",
                         icon: "success"
                     });
+                    }
+                   
                 });
         });
     </script>

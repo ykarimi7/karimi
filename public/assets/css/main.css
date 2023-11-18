@@ -1,0 +1,41 @@
+body{
+    background-color: rgb(235, 235, 235);
+    padding: 0;
+    margin: 0;
+}
+.holder{
+    height: auto;
+    background-color: white;
+    margin:100px auto;
+    border-radius: 15px;
+    box-shadow: 0 0 10px 5px gainsboro;
+    text-align: center;
+    padding: 40px;
+}
+.holderBtn{
+    max-width: 330px;
+    margin: auto;
+}
+.mybtn1{
+    background-color: rgb(235, 235, 235);
+    width: 100%;
+    font-size: 22px;
+}
+.iconBox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.iconBox span{
+    background-color: grey;
+    font-size: 20px;
+    padding: 0px 3.5px 0px 3.6px;
+    border-radius: 6px;
+    font-family: initial;
+    cursor: pointer;
+}
+.icon2{
+    font-size: 28px;
+    color: grey;
+    cursor: pointer;
+}

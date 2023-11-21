@@ -338,4 +338,9 @@ class User extends Authenticatable implements HasMedia
 
         return parent::delete();
     }
+
+    public function UserActitvity()
+    {
+        return $this->hasOne(UserActivity::class);
+    }
 }

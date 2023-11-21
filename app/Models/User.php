@@ -9,13 +9,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Database\Eloquent\Collection;
 use DB;
-use Auth;
 use Carbon\Carbon;
 use phpDocumentor\Reflection\Types\Boolean;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
-
+use Illuminate\Support\Facades\Auth;
 class User extends Authenticatable implements HasMedia
 {
     use HasApiTokens, Notifiable, InteractsWithMedia, SanitizedRequest;
@@ -337,5 +336,10 @@ class User extends Authenticatable implements HasMedia
         Report::where('user_id', $this->id)->delete();
 
         return parent::delete();
+    }
+
+    public function wasManaUser()
+    {
+        return Manauser::where('manager_id', Auth::user()->id)->exists();
     }
 }

@@ -19,6 +19,7 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
+        'multiple-uploads/store',
         'connect/callback/apple',
         'api/connect/callback/apple',
         'api/*'

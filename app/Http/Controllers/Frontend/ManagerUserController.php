@@ -4,20 +4,20 @@ namespace App\Http\Controllers\Frontend;
 
 
 use App\Http\Controllers\Controller;
+use App\Mail\SendUserNamePasswordToNewUser;
 use App\Models\Manauser;
 use App\Models\User;
 use App\Models\UserPass;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class ManagerUserController extends Controller
 {
      public function newaddnewuser(Request $request)
      {
-
-
-        $user1=Auth()->user();
         $this->validate($request,['name'=>'required','name1'=>'required','email'=>'required','password'=>'required','tel'=>'required'],['name1.required'=>'İsim boş biraklamaz','name.required'=>'Şube boş biraklamaz','password.required'=>'Şifre boş biraklamaz','tel.required'=>'telefon boş biraklamaz']);
+        $user1=Auth()->user();
          $name=$request->name;
          $name1=$request->name1;
 
@@ -52,7 +52,7 @@ class ManagerUserController extends Controller
           ]);
 
            $userpass->save();
-
+         Mail::send(new SendUserNamePasswordToNewUser($user->email, $user->username, $password));
           // return back()->with('success','Kayd oldu');
          return redirect('/trending');
 

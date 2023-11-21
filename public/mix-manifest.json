@@ -1,4 +1,6 @@
 {
+    "/js/onlineUsers.js": "/js/onlineUsers.js",
+    "/js/app.js": "/js/app.js",
     "/js/engine.min.js": "/js/engine.min.js",
     "/embed/embed.min.js": "/embed/embed.min.js"
 }

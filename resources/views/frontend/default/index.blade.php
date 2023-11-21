@@ -56,8 +56,8 @@
           type="text/css">
     <link rel="stylesheet" href="{{ asset('skins/default/css/custom.css?version=' . env('APP_VERSION')) }}"
           type="text/css">
-          <script src=" https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.all.min.js "></script>
-<link href=" https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.min.css " rel="stylesheet">
+    <script src=" https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.all.min.js "></script>
+    <link href=" https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.min.css " rel="stylesheet">
 
     @if(is_array(config('modules.css')))
         @foreach(config('modules.css') as $css)
@@ -83,7 +83,25 @@
             allow_artist_claim: {{ intval(config('settings.allow_artist_claim', 1)) }}
         };
     </script>
+
+    @if(auth()->check())
+        <script src="{{ url('js/onlineUsers.js') }}" type="text/javascript"></script>{{--        #saber--}}
+        <script>
+            window.userId = {{ auth()->user()->id }};
+        </script>
+    @else
+        <script>
+            window.userId = null; // or any other default value
+        </script>
+    @endif
     <script src="{{ asset('js/core.js?version=' . env('APP_VERSION')) }}" type="text/javascript"></script>
+        <!-- FilePond styles -->
+        <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+
+        <!-- FilePond plugins styles (optional) -->
+        <link href="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.css" rel="stylesheet">
+        <link href="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.css" rel="stylesheet">
+
 </head>
 <body class="@if((isset($_COOKIE['darkMode']) && $_COOKIE['darkMode'] == 'true') || (config('settings.dark_mode', true) && ! isset($_COOKIE['darkMode'])))  dark-theme @endif @if(env('MEDIA_AD_MODULE') == 'true') media-ad-enabled @endif">
 
@@ -328,7 +346,7 @@
             </li>
         @endif
 
-        @if(auth()->user())
+        {{-- @if(auth()->user()->wasManaUser()) --}}
             <li class="side-menu-trending">
                 <a href="{{ route('frontend.trending') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -338,7 +356,18 @@
                     <span data-translate-text="CUSTOMER">{{ __('web.CUSTOMER') }}</span>
                 </a>
             </li>
-        @endif
+        {{-- @endif --}}
+        {{-- @if(auth()->user()->wasManaUser()) --}}
+            <li class="side-files-multiple-uploads-view">
+                <a href="{{ route('frontend.files.multiple.uploads.view') }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                    </svg>
+                    <span data-translate-text="MULTIPLE_UPLOADS_FILE">{{ __('web.MULTIPLE_UPLOADS_FILE') }}</span>
+                </a>
+            </li>
+        {{-- @endif --}}
 
         @if(config('settings.module_store', true))
             <li class="side-menu-store">
@@ -752,13 +781,12 @@
 @endif
 
 
-
 <script src="{{ asset('js/route.js?version=' . env('APP_VERSION')) }}" type="text/javascript"></script>
 <script src="{{ asset('js/engine.min.js?version=' . env('APP_VERSION')) }}" type="text/javascript"></script>
 <script src="{{ asset('skins/default/js/custom.js?version=' . env('APP_VERSION')) }}" type="text/javascript"></script>
 <script src="{{ asset('embed/embed.js?skin=embedplayer10&icon_set=radius&version=' . env('APP_VERSION')) }}"
         type="text/javascript"></script>
 
-        @yield('script')
+@yield('script')
 </body>
 </html>

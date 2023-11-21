@@ -11,6 +11,8 @@
 |
 */
 
+use App\Http\Controllers\Service\UserActivityController;
+
 Route::group(['middleware' => 'locale'], function() {
 
     /**
@@ -64,7 +66,9 @@ Route::group(['middleware' => 'locale'], function() {
             includeRouteFiles(__DIR__.'/Frontend/');
         });
     }
-
+    Route::middleware('auth')->group(function () {
+        Route::post('/update-online-status', [UserActivityController::class, 'updateOnlineStatus']);
+    });
 
     Auth::routes();
 

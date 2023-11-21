@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Default Filesystem Disk
@@ -46,11 +45,15 @@ return [
             'driver' => 'local',
             'root' => storage_path('app'),
         ],
+        'musics' => [
+            'driver' => 'local',
+            'root' => storage_path('app/musics'),
+        ],
 
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
         ],
 
@@ -78,5 +81,4 @@ return [
             'url' => env('WASABI_URL'),
         ],
     ],
-
 ];

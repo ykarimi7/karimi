@@ -45,3 +45,4 @@ Homestead.json
 /app/Modules/TrendingAlbums/
 vendor
 /vendor
+node_modules

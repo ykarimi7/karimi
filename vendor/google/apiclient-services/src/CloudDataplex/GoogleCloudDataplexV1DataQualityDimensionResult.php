@@ -25,6 +25,10 @@ class GoogleCloudDataplexV1DataQualityDimensionResult extends \Google\Model
    * @var bool
    */
   public $passed;
+  /**
+   * @var float
+   */
+  public $score;
 
   /**
    * @param GoogleCloudDataplexV1DataQualityDimension
@@ -53,6 +57,20 @@ class GoogleCloudDataplexV1DataQualityDimensionResult extends \Google\Model
   public function getPassed()
   {
     return $this->passed;
+  }
+  /**
+   * @param float
+   */
+  public function setScore($score)
+  {
+    $this->score = $score;
+  }
+  /**
+   * @return float
+   */
+  public function getScore()
+  {
+    return $this->score;
   }
 }
 

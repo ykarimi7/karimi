@@ -38,3 +38,9 @@ mix.scripts([
 mix.scripts([
     'public/embed/embed.js'
 ], 'public/embed/embed.min.js');
+
+mix.js('resources/js/onlineUsers.js', 'public/js');
+mix.js('resources/js/app.js', 'public/js')
+   .vue({
+      loader: 'vue-loader-v16' // or the appropriate version
+   });

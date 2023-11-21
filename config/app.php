@@ -241,5 +241,6 @@ return [
         'FFMpeg' => Pbmedia\LaravelFFMpeg\FFMpegFacade::class,
         'Advert' => App\Advert\Facade\AdvertFacade::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Pusher' => Pusher\Pusher::class,
     ],
 ];

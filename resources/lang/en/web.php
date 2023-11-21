@@ -2005,4 +2005,5 @@ return [
     "TICKET" => "Ticket",
     "TIME" => "Time",
     "CUSTOMER"=>"Customer",
+    "MULTIPLE_UPLOADS_FILE"=> "Upload Files",
 ];

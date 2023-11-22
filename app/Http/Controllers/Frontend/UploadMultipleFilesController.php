@@ -11,15 +11,14 @@ use Illuminate\Filesystem\Filesystem;
 use Carbon\Carbon;
 use App\Models\MediaManaUser;
 use App\Models\User;
+
 class UploadMultipleFilesController extends Controller
 {
     private $request;
     private $user;
-
     public function __construct(Request $request)
     {
         $this->request = $request;
-        $this->user = User::find(28);  
     }
 
     public function index()
@@ -53,33 +52,33 @@ class UploadMultipleFilesController extends Controller
 
     public function multipleUploads(Request $request, Filesystem $filesystem)
     {
-        $uploadedFiles = [];
-        // dd($request->all());
-    
+        $this->user = $request->user();
         if ($request->hasFile('musics')) {
-            // dd('jhkjgjgjk');
             foreach ($request->file('musics') as $index => $file) {
                 list($filePath, $fileName) = $this->fileHandler($file, $filesystem);
                 $this->storeFile($filePath, $fileName, $file);
-    
-                $uploadedFiles[] = $filePath . '/' . $fileName;
+
+                MediaManaUser::create([
+                    'manauser_id' => $this->user->Manager->id,
+                    'author' => $request->author,
+                    'file' => $filePath . '/' . $fileName
+                ]);
             }
         }
-    
+
         return response()->json([
-            'message' => 'Files uploaded successfully',
-            'files' => $uploadedFiles,
+            'message' => 'Files uploaded successfully'
         ]);
     }
-    
+
     public function fileHandler($music, $filesystem): array
     {
         $file = $music;
-        $filePath = "{$this->user->name}/{$this->user->id}";
+        $filePath = "{$this->user->name}-{$this->user->id}/" . Carbon::now()->format('Y-m-d');
         $fileName = $this->generateFileName($file, $filePath, $filesystem);
         return [$filePath, $fileName];
     }
-    
+
     private function generateFileName($file, $path, $filesystem): string
     {
         $fileName = $file->getClientOriginalName();
@@ -88,7 +87,7 @@ class UploadMultipleFilesController extends Controller
         }
         return $fileName;
     }
-    
+
     private function storeFile($path, $fileName, $file): void
     {
         Storage::disk('musics')->putFileAs($path, $file, $fileName);

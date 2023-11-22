@@ -8,4 +8,8 @@ class MediaManaUser extends Model
 {
     protected $guarded = [];
     
+    public function Manauser()
+    {
+        return $this->belongsTo(Manauser::class);
+    }
 }

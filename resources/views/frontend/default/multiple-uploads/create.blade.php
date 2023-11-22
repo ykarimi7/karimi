@@ -9,14 +9,18 @@
 
                 <div class="card-header py-3 border-0">
                     <div id="app">
-                        <FilePondGallery></FilePondGallery>
+                        <App></App>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 @endsection
 
 @section('script')
+    <script>
+        window.authUser = @json(auth()->user());
+    </script>
     <script src="{{ asset('js/app.js') }}"></script>
 @endsection

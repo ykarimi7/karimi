@@ -15,6 +15,9 @@ class CreateMediaManaUsersTable extends Migration
     {
         Schema::create('media_mana_users', function (Blueprint $table) {
             $table->id();
+            $table->integer('manauser_id');
+            $table->string('author');
+            $table->text('file');
             $table->timestamps();
         });
     }

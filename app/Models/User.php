@@ -337,9 +337,16 @@ class User extends Authenticatable implements HasMedia
 
         return parent::delete();
     }
+    
+    public function Manager()
+    {
+        return $this->hasOne(Manauser::class , 'manager_id' , 'id');
+    }
 
     public function wasManaUser()
     {
         return Manauser::where('manager_id', Auth::user()->id)->exists();
     }
+
+
 }

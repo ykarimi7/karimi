@@ -18,7 +18,7 @@ class CreateUserActivitiesTable extends Migration
 
             function (Blueprint $table) {
                 $table->id();
-                $table->unsignedBigInteger('user_id');
+                $table->integer('user_id');
                 $table->timestamp('online_at')->nullable();
                 $table->timestamp('full_time_onlined')->nullable();
                 $table->timestamp('offline_at')->nullable();

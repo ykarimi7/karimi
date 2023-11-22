@@ -4514,6 +4514,11 @@
   dependencies:
     "path-key" "^3.0.0"
 
+"nprogress@^0.2.0":
+  "integrity" "sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA=="
+  "resolved" "https://registry.npmjs.org/nprogress/-/nprogress-0.2.0.tgz"
+  "version" "0.2.0"
+
 "nth-check@^2.0.1":
   "integrity" "sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w=="
   "resolved" "https://registry.npmjs.org/nth-check/-/nth-check-2.1.1.tgz"
@@ -6288,7 +6293,7 @@
   "resolved" "https://registry.npmjs.org/vm-browserify/-/vm-browserify-1.1.2.tgz"
   "version" "1.1.2"
 
-"vue-filepond@^7.0.3":
+"vue-filepond@^7.0.4":
   "integrity" "sha512-HvWlCG8qjvyykrpPTDjJ+JqsHTXt5/0zWMX9vu7kU3JXCUODPUkGi9prZcauOnIZ4MqyeSZ9M0sDVwdMATyt1g=="
   "resolved" "https://registry.npmjs.org/vue-filepond/-/vue-filepond-7.0.4.tgz"
   "version" "7.0.4"
@@ -6317,6 +6322,11 @@
   dependencies:
     "de-indent" "^1.0.2"
     "he" "^1.2.0"
+
+"vue-toasted@^1.1.28":
+  "integrity" "sha512-UUzr5LX51UbbiROSGZ49GOgSzFxaMHK6L00JV8fir/CYNJCpIIvNZ5YmS4Qc8Y2+Z/4VVYRpeQL2UO0G800Raw=="
+  "resolved" "https://registry.npmjs.org/vue-toasted/-/vue-toasted-1.1.28.tgz"
+  "version" "1.1.28"
 
 "vue@^3.2.36", "vue@>=3 < 4", "vue@3.3.8":
   "integrity" "sha512-5VSX/3DabBikOXMsxzlW8JyfeLKlG9mzqnWgLQLty88vdZL7ZJgrdgBOmrArwxiLtmS+lNNpPcBYqrhE6TQW5w=="

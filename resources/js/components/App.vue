@@ -139,7 +139,7 @@ export default defineComponent({
             },
           })
           .then((response) => {
-            console.log(response.data.message);
+            // console.log(response.data.message);
             this.myFile = [];
             this.author = "";
             Toast.fire({

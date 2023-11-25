@@ -83,31 +83,23 @@
             allow_artist_claim: {{ intval(config('settings.allow_artist_claim', 1)) }}
         };
     </script>
-
-    @if(auth()->check())
-        <script src="{{ url('js/onlineUsers.js') }}" type="text/javascript"></script>{{--        #saber--}}
-        <script>
-            window.userId = {{ auth()->user()->id }};
-        </script>
-    @else
-        <script>
-            window.userId = null; // or any other default value
-        </script>
-    @endif
     <script src="{{ asset('js/core.js?version=' . env('APP_VERSION')) }}" type="text/javascript"></script>
-        <!-- FilePond styles -->
-        <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+    <!-- FilePond styles -->
+    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
 
-        <!-- FilePond plugins styles (optional) -->
-        <link href="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.css" rel="stylesheet">
-        <link href="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.css" rel="stylesheet">
-
+    <!-- FilePond plugins styles (optional) -->
+    <link href="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.css"
+          rel="stylesheet">
+    <link href="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.css"
+          rel="stylesheet">
 </head>
-<body class="@if((isset($_COOKIE['darkMode']) && $_COOKIE['darkMode'] == 'true') || (config('settings.dark_mode', true) && ! isset($_COOKIE['darkMode'])))  dark-theme @endif @if(env('MEDIA_AD_MODULE') == 'true') media-ad-enabled @endif">
-
+<body
+        class="@if((isset($_COOKIE['darkMode']) && $_COOKIE['darkMode'] == 'true') || (config('settings.dark_mode', true) && ! isset($_COOKIE['darkMode'])))  dark-theme @endif @if(env('MEDIA_AD_MODULE') == 'true') media-ad-enabled @endif">
 
 <div id="fb-root"></div>
 <div id="header-container">
+    <online-users></online-users>
+
     <div id="logo" class="desktop">
         <a href="{{ route('frontend.homepage') }}" class="logo-link"></a>
     </div>
@@ -346,7 +338,7 @@
             </li>
         @endif
 
-        {{-- @if(auth()->user()->wasManaUser()) --}}
+        @if(auth()->user() && auth()->user()->wasManaUser())
             <li class="side-menu-trending">
                 <a href="{{ route('frontend.trending') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -356,8 +348,8 @@
                     <span data-translate-text="CUSTOMER">{{ __('web.CUSTOMER') }}</span>
                 </a>
             </li>
-        {{-- @endif --}}
-        {{-- @if(auth()->user()->wasManaUser()) --}}
+        @endif
+        @if(auth()->user() && auth()->user()->wasManaUser())
             <li class="side-files-multiple-uploads-view">
                 <a href="{{ route('frontend.files.multiple.uploads.view') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -367,7 +359,7 @@
                     <span data-translate-text="MULTIPLE_UPLOADS_FILE">{{ __('web.MULTIPLE_UPLOADS_FILE') }}</span>
                 </a>
             </li>
-        {{-- @endif --}}
+        @endif
 
         @if(config('settings.module_store', true))
             <li class="side-menu-store">
@@ -711,9 +703,11 @@
 
 <div id="main"
      @if(config('settings.landing') && ! auth()->check() && Route::currentRouteName() == 'frontend.homepage') class="d-none" @endif>
+
     <div id="page">
         @yield('content')
     </div>
+
 </div>
 
 <div id="notifications"></div>
@@ -786,6 +780,11 @@
 <script src="{{ asset('skins/default/js/custom.js?version=' . env('APP_VERSION')) }}" type="text/javascript"></script>
 <script src="{{ asset('embed/embed.js?skin=embedplayer10&icon_set=radius&version=' . env('APP_VERSION')) }}"
         type="text/javascript"></script>
+
+<script src="{{ asset('js/onlineUsers.js') }}" type="text/javascript" defer></script>
+<script>
+    window.user = @json(auth()->user() ?? null);
+</script>
 
 @yield('script')
 </body>
